@@ -4,7 +4,8 @@
         Title="Настройки" Height="600" Width="800"
         WindowStartupLocation="CenterOwner"
         Background="#1E1E2E"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Icon="pack://application:,,,/icon.png">
 
     <Window.Resources>
         <Style x:Key="SettingsBorderStyle" TargetType="Border">

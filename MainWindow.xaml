@@ -9,7 +9,8 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanResize"
         MinWidth="600" MinHeight="450"
-        Background="#1E1E2E">
+        Background="#1E1E2E"
+        Icon="pack://application:,,,/icon.png">
 
     <Grid>
         <Grid.ColumnDefinitions>
