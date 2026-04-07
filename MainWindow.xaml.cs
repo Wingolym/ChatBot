@@ -62,14 +62,7 @@ namespace ChatBot
         private void ToggleSidebar()
         {
             _sidebarVisible = !_sidebarVisible;
-            if (_sidebarVisible)
-            {
-                SidebarColumn.Width = new GridLength(280);
-            }
-            else
-            {
-                SidebarColumn.Width = new GridLength(0);
-            }
+            GridLengthAnimationHelper.AnimateWidth(SidebarColumn, _sidebarVisible ? 280.0 : 0.0, 300);
         }
 
         private void NewChatBtn_Click(object sender, RoutedEventArgs e)
