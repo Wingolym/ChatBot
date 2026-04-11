@@ -1,6 +1,9 @@
+using ChatBot.Models;
+using ChatBot.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,8 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
-using ChatBot.Models;
-using ChatBot.Services;
 
 namespace ChatBot
 {
@@ -587,8 +588,20 @@ namespace ChatBot
         private string StripThinkTags(string text)
         {
             if (string.IsNullOrEmpty(text)) return text;
-            var result = System.Text.RegularExpressions.Regex.Replace(text, @"<think>.*?", "", System.Text.RegularExpressions.RegexOptions.Singleline);
-            return result.Trim();
+
+            var withoutBlocks = Regex.Replace(
+                text,
+                @"<think>[\s\S]*?</think>",
+                "",
+                RegexOptions.IgnoreCase);
+
+            withoutBlocks = Regex.Replace(
+                withoutBlocks,
+                @"</?\s*think\s*>",
+                "",
+                RegexOptions.IgnoreCase);
+
+            return withoutBlocks.Trim();
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
